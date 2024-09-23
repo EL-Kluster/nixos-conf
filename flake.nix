@@ -18,23 +18,20 @@
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;
-      systems = [
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
     in
     {
       inherit lib;
-      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
 
       nixosConfigurations = {
 
         master = lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [ ./hosts/master ];
           specialArgs = { inherit inputs outputs; };
         };
 
         workers = lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [ ./hosts/workers ];
           specialArgs = { inherit inputs outputs; };
         };

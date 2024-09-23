@@ -2,6 +2,7 @@
 
   imports = [
     ../common
+    ./k8s.nix
   ];
 
 }
