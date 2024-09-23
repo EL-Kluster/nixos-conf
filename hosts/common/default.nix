@@ -4,6 +4,7 @@ with lib;
 {
   imports = [
     ../../users
+    ./hardware-configuration.nix
   ];
 
   security.sudo = {
