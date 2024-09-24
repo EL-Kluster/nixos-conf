@@ -1,0 +1,3 @@
+{
+   host-network = import ./network;
+}
