@@ -3,22 +3,21 @@
 let
   sshKey = builtins.readFile ./id_rsa.pub;
 in {
-  users.users.jerem = {
+  users.users.mayara = {
     isNormalUser = true;
-    description = "Jerem Woirhaye";
-    home = "/home/jerem";
+    description = "Mayara Castro";
+    home = "/home/mayara";
     group = "users";
     shell = pkgs.bash;
-    extraGroups = [ "wheel" ];  
+    extraGroups = [ ];  
     openssh.authorizedKeys.keys = [ sshKey ];
   };
 
-  home-manager.users.jerem = { pkgs, ... }: {
+  home-manager.users.mayara = { pkgs, ... }: {
     home.packages = with pkgs; [
-      vim
+      nvim
       git
     ];
   };
-
-
+  
 }

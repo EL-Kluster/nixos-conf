@@ -1,4 +1,4 @@
-{lib, ...}:
+{lib, pkgs, ...}:
 
 with lib;
 {
@@ -10,6 +10,12 @@ with lib;
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false; 
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      sshfs
+    ];
   };
 
   services.openssh.enable = true;

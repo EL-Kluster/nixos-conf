@@ -12,4 +12,11 @@ in {
     extraGroups = [ "wheel" ];  
     openssh.authorizedKeys.keys = [ sshKey ];
   };
+
+  home-manager.users.marius = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      vim
+      git
+    ];
+  };
 }
