@@ -16,16 +16,17 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;
     in
     {
       inherit lib;
+      nixosModules = import ./modules;
 
       nixosConfigurations = {
 

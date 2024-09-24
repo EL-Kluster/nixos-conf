@@ -1,11 +1,11 @@
-{lib, pkgs, ...}:
+{lib, pkgs,outputs, ...}:
 
 with lib;
 {
   imports = [
     ../../users
     ./hardware-configuration.nix
-  ];
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   security.sudo = {
     enable = true;
