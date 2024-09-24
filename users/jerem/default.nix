@@ -18,6 +18,8 @@ in {
       vim
       git
     ];
+
+    home.stateVersion = "23.05";
   };
 
 

@@ -16,7 +16,10 @@ in {
   home-manager.users.marius = { pkgs, ... }: {
     home.packages = with pkgs; [
       vim
+      neovim
       git
     ];
+
+    home.stateVersion = "23.05";
   };
 }

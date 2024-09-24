@@ -9,15 +9,17 @@ in {
     home = "/home/mayara";
     group = "users";
     shell = pkgs.bash;
-    extraGroups = [ ];  
+    extraGroups = [ ]; 
     openssh.authorizedKeys.keys = [ sshKey ];
   };
 
   home-manager.users.mayara = { pkgs, ... }: {
     home.packages = with pkgs; [
-      nvim
+      neovim
       git
     ];
+
+    home.stateVersion = "23.05";
   };
   
 }

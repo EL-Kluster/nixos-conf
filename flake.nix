@@ -12,8 +12,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
@@ -28,13 +31,19 @@
 
         master = lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/master ];
+          modules = [
+            ./hosts/master 
+            home-manager.nixosModules.home-manager
+          ];
           specialArgs = { inherit inputs outputs; };
         };
 
         workers = lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/workers ];
+          modules = [
+            ./hosts/workers 
+            home-manager.nixosModules.home-manager
+          ];
           specialArgs = { inherit inputs outputs; };
         };
       };
