@@ -10,8 +10,13 @@ Bienvenue dans le dépôt de configuration NixOS de **El-Kluster**, un cluster K
 1. **Cloner le dépôt :**
 
    ```bash
-   git clone https://github.com/username/el-kluster.git
-   cd el-kluster
+   git clone git@github.com:EL-Kluster/nixos-conf.git
+   cd nixos-conf
+   ```
+   ou
+   ```bash
+   git clone https://github.com/EL-Kluster/nixos-conf.git
+   cd nixos-conf
    ```
 
 2. **Appliquer la configuration :**
