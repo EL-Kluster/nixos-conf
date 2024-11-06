@@ -7,6 +7,15 @@ in
 {
   networking.extraHosts = "${kubeMasterIP} ${kubeMasterHostname}";
 
+  networking.hostName = "worker";
+
+  networking.firewall = {
+      allowedTCPPorts = [ 10250 10256 ];
+      allowedUDPPortRanges = [
+        { from = 30000; to = 32767; }
+      ];
+    };
+
   environment.systemPackages = with pkgs; [
     kompose
     kubectl
